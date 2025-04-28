@@ -1,6 +1,7 @@
 import streamlit as st
 import pydeck as pdk
 import pandas as pd
+import numpy as np
 
 def plot_route_map(route_stop_times, stops_df):
     # Merge stop times and stops to get ordered stop coordinates
@@ -16,14 +17,13 @@ def plot_route_map(route_stop_times, stops_df):
 
     # Create the line as a list of [lon, lat] pairs
     route_line = [[row["stop_lon"], row["stop_lat"]] for idx, row in ordered_stops.iterrows()]
-    print(route_line)
 
     # Define Pydeck layers
     stop_layer = pdk.Layer(
         "ScatterplotLayer",
         data=stop_points,
         get_position='[lon, lat]',
-        get_color='[0, 255, 0]',  # Green
+        get_color='[255,0,0]',  # Green
         get_radius=50,
         pickable=True,
     )
@@ -32,9 +32,9 @@ def plot_route_map(route_stop_times, stops_df):
         "LineLayer",
         data=[{"path": route_line}],
         get_path="path",
-        get_color='[255, 0, 0]',  # Red
-        width_scale=3,
-        width_min_pixels=3,
+        get_color='[0,0,255]',  # Red
+        width_scale=5,
+        width_min_pixels=5,
     )
 
     # Set the initial view
