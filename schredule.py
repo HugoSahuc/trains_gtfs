@@ -103,4 +103,4 @@ if uploaded_file:
             st.subheader("Lignes et 2 prochains passages à ce stop (aujourd'hui uniquement)")
             st.dataframe(pd.DataFrame(results))
         else:
-            st.info("Aucun passage à venir trouvé pour cet arrêt aujourd'hui.")arrêt
+            st.info("Aucun passage à venir trouvé pour cet arrêt aujourd'hui.")
